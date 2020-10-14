@@ -8,7 +8,7 @@ class XMLParser:
 
     def __parse_xml(self, xml_file):
         root = ET.parse(xml_file).getroot()
-        for element in root.find('seller'):
+        for element in root.findall('seller'):
             product = element.find('product')
 
             self.tags.append({
