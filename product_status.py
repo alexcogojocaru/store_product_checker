@@ -35,7 +35,7 @@ class ProductStatuses:
             req = requests.get(store['link'], headers=self.headers)
 
             if req.status_code == 200:
-                print(FORMAT_STRING % (store['seller_name'], req.status_code, colored(LogTag.SUCCESS, 'green')))
+                print(self.FORMAT_STRING % (store['seller_name'], req.status_code, colored(LogTag.SUCCESS, 'green')))
 
                 with open('./response_pages/' + store['seller_name'] + '.html', 'wb') as f:
                     f.write(req.text.encode('utf-8'))
@@ -51,5 +51,5 @@ class ProductStatuses:
                     if str(x).find(store['in_stock']) != -1:
                         self.product_availability[tag_name]['instock'] += 1
             else:
-                print(FORMAT_STRING % (store['seller_name'], req.status_code, colored(LogTag.FAIL, 'red')))
+                print(self.FORMAT_STRING % (store['seller_name'], req.status_code, colored(LogTag.FAIL, 'red')))
                     
