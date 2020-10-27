@@ -24,4 +24,30 @@
             <out_stock>outofstock</out_stock>
         </product>
     </seller>
+
+    <seller>
+        <seller_name>pc-garage</seller_name>
+        <product>
+            <name>RTX 3070</name>
+            <link>https://www.pcgarage.ro/placi-video/filtre/model-model-geforce-rtx-3070/</link>
+            <div_name>product_box_container</div_name>
+            <status>product_box_availability</status>
+            <tag>div</tag>
+            <in_stock>instock</in_stock>
+            <out_stock>outofstock</out_stock>
+        </product>
+    </seller>
+
+<!--    <seller>-->
+<!--        <seller_name>pc-garage</seller_name>-->
+<!--        <product>-->
+<!--            <name>procesoare</name>-->
+<!--            <link>https://www.pcgarage.ro/procesoare/</link>-->
+<!--            <div_name>product_box_container</div_name>-->
+<!--            <status>product_box_availability</status>-->
+<!--            <tag>div</tag>-->
+<!--            <in_stock>instock</in_stock>-->
+<!--            <out_stock>outofstock</out_stock>-->
+<!--        </product>-->
+<!--    </seller>-->
 </root>
