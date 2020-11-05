@@ -1,6 +1,7 @@
 # store_product_checker
 
 <h3>python app that checks if there are available products in a specific store</h3>
+<h4>To run the script use: python build.py</h4>
 <h3><b>Description</b></h3>
 
 <ul>
@@ -23,3 +24,10 @@
         </ul>
     </li>
 </ul>
+
+<h3>XML file format</h3>
+<xmp>
+    <catalog>
+        <cd></cd>
+    </catalog>
+</xmp>

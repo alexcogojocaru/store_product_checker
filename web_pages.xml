@@ -2,9 +2,20 @@
     <seller>
         <seller_name>emag</seller_name>
         <product>
+            <name>RTX 3070</name>
+            <link>https://www.emag.ro/search/rtx%203070?ref=effective_search6</link>
+            <status>product-stock-status</status>
+            <tag>p</tag>
+            <in_stock>in_stock</in_stock>
+            <out_stock>out_of_stock</out_stock>
+        </product>
+    </seller>
+
+    <seller>
+        <seller_name>emag</seller_name>
+        <product>
             <name>RTX 3080</name>
             <link>https://www.emag.ro/placi_video/filter/procesor-video-f547,geforce-rtx-3080-v-9191986/c?ref=lst_leftmore_547_-9191986</link>
-            <div_name>card</div_name>
             <status>product-stock-status</status>
             <tag>p</tag>
             <in_stock>in_stock</in_stock>
@@ -17,7 +28,6 @@
         <product>
             <name>RTX 3080</name>
             <link>https://www.pcgarage.ro/placi-video/filtre/model-model-geforce-rtx-3080/</link>
-            <div_name>product_box_container</div_name>
             <status>product_box_availability</status>
             <tag>div</tag>
             <in_stock>instock</in_stock>
@@ -30,7 +40,6 @@
         <product>
             <name>RTX 3070</name>
             <link>https://www.pcgarage.ro/placi-video/filtre/model-model-geforce-rtx-3070/</link>
-            <div_name>product_box_container</div_name>
             <status>product_box_availability</status>
             <tag>div</tag>
             <in_stock>instock</in_stock>
@@ -38,16 +47,27 @@
         </product>
     </seller>
 
-<!--    <seller>-->
-<!--        <seller_name>pc-garage</seller_name>-->
-<!--        <product>-->
-<!--            <name>procesoare</name>-->
-<!--            <link>https://www.pcgarage.ro/procesoare/</link>-->
-<!--            <div_name>product_box_container</div_name>-->
-<!--            <status>product_box_availability</status>-->
-<!--            <tag>div</tag>-->
-<!--            <in_stock>instock</in_stock>-->
-<!--            <out_stock>outofstock</out_stock>-->
-<!--        </product>-->
-<!--    </seller>-->
+    <seller>
+        <seller_name>evomag</seller_name>
+        <product>
+            <name>RTX 3070</name>
+            <link>https://www.evomag.ro/componente-pc-gaming-placi-video/filtru/model+chipset:geforce+rtx+3070</link>
+            <status>stoc_produs</status>
+            <tag>div</tag>
+            <in_stock>stock_instocfurnizor</in_stock>
+            <out_stock>stock_stocepuizat</out_stock>
+        </product>
+    </seller>
+
+    <seller>
+        <seller_name>evomag</seller_name>
+        <product>
+            <name>RTX 3080</name>
+            <link>https://www.evomag.ro/componente-pc-gaming-placi-video/asus/filtru/model+chipset:geforce+rtx+3080</link>
+            <status>stoc_produs</status>
+            <tag>div</tag>
+            <in_stock>stock_instocfurnizor</in_stock>
+            <out_stock>stock_stocepuizat</out_stock>
+        </product>
+    </seller>
 </root>

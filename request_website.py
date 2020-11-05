@@ -3,6 +3,7 @@ from xml_parser import XmlParser
 from termcolor import colored
 from bs4 import BeautifulSoup
 from datetime import datetime
+from log_file import LogFile
 import threading
 import requests
 import time
@@ -16,22 +17,25 @@ duration = 1000
 
 
 class RequestWebsite:
-    def __init__(self, xml_file, proxies):
-        super(RequestWebsite, self).__init__()
+    def __init__(self, xml_file, proxies=None):
         self.xml_parser = XmlParser(xml_file)
         self.proxies_status = ProxyStatus(proxies)
         self.product_availability = dict()
-        self.proxies = None
+        self.proxies = proxies
         self.scanned = False
-        self.log_file = ''
+        # self.log_file = open('./logs/log.txt', 'a')
+        self.log_file = LogFile()
 
     def run(self):
         try:
             while True:
-                print(f'\t\t{datetime.now()}')
+                now = datetime.now()
+                self.log_file.write_file(f'\t\t{str(now)}')
+                print(f'\t\t{now}')
                 self.__request_website()
                 self.__print_stock()
                 time.sleep(180)
+                self.log_file.write_file('\n')
                 print('\n\n')
         except KeyboardInterrupt:
             print(colored('Exiting...', 'red'))
@@ -52,6 +56,7 @@ class RequestWebsite:
 
                 if req.status_code == 200:
                     print(f'{colored("[SUCCESS]", "green")} {req.status_code} - {store["seller_name"]} [{req.elapsed.total_seconds()}s]')
+                    self.log_file.write_file(f"[SUCCESS] {req.status_code} - {store['seller_name']} [{req.elapsed.total_seconds()}s]") 
 
                     tag_name = store['seller_name'] + ' ' + store['product_name']
                     self.product_availability[tag_name] = {'outofstock': 0, 'instock': 0}
@@ -66,13 +71,13 @@ class RequestWebsite:
                             if not beep_alarm:
                                 winsound.Beep(frequency, duration)
                                 beep_alarm = True
-                                
                     if not os.path.isdir('./logs'):
                         os.mkdir('./logs')
                 else:
                     raise requests.exceptions.RequestException
             except (requests.exceptions.RequestException, requests.exceptions.ProxyError):
                 print(f'{colored("[FAILED]", "red")} - {store["seller_name"]}')
+                self.log_file.write_file(f"[FAILED] - {store['seller_name']}")
 
     def __init_proxies(self, proxy):
         if proxy is not None:
@@ -85,15 +90,26 @@ class RequestWebsite:
 
     def __print_stock(self):
         for store in self.product_availability.keys():
-            # print(colored(store, 'blue'))
             print(store)
-
-            if self.product_availability[store]['instock'] != 0:
+            self.log_file.write_file(store)
+            
+            if self.product_availability[store]['instock'] == 0:
+                print(f'\t{colored("out_of_stock", "red")}')
+                self.log_file.write_file(f'\tout_of_stock')
+            else:
                 print(f'\tin_stock: {colored(self.product_availability[store]["instock"], "green")}')
-            else:
-                print(f'\tin_stock: {colored(self.product_availability[store]["instock"], "red")}')
-
-            if self.product_availability[store]['outofstock'] != 0:
-                print(f'\tout_stock: {colored(self.product_availability[store]["outofstock"], "green")}')
-            else:
-                print(f'\tout_stock: {colored(self.product_availability[store]["outofstock"], "red")}')
+                self.log_file.write_file(f'\tin_stock: {self.product_availability[store]["instock"]}')
+            
+            # self.log_file.write_file(store)
+            # self.log_file.write_file(f'\tin_stock: {self.product_availability[store]["instock"]}')
+            # self.log_file.write_file(f'\tout_stock: {self.product_availability[store]["outofstock"]}')
+            # 
+            # if self.product_availability[store]['instock'] != 0:
+            #     print(f'\tin_stock: {colored(self.product_availability[store]["instock"], "green")}')
+            # else:
+            #     print(f'\tin_stock: {colored(self.product_availability[store]["instock"], "red")}')
+            # 
+            # if self.product_availability[store]['outofstock'] != 0:
+            #     print(f'\tout_stock: {colored(self.product_availability[store]["outofstock"], "green")}')
+            # else:
+            #     print(f'\tout_stock: {colored(self.product_availability[store]["outofstock"], "red")}')

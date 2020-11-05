@@ -15,7 +15,6 @@ class XmlParser:
                 'seller_name': element.find('seller_name').text,
                 'product_name': product.find('name').text,
                 'link': product.find('link').text,
-                'div': product.find('div_name').text,
                 'status': product.find('status').text,
                 'tag': product.find('tag').text,
                 'in_stock': product.find('in_stock').text,
